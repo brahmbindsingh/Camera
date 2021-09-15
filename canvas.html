@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        let canvas = document.querySelector("canvas");
+        let isDrawing = false;
+
+        window.addEventListener("mousedown",(e)=>{
+            // console.log(e.clientX);
+            // console.log(e.clientY);
+            tool.moveTo(e.clientX,e.clientY);
+            isDrawing = true;
+        })
+        window.addEventListener("mouseup",(e)=>{
+            isDrawing = false;
+        })
+        window.addEventListener("mousemove",(e)=>{
+            if(isDrawing){
+                tool.lineTo(e.clientX,e.clientY);
+                tool.stroke();
+            }
+        })
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let tool = canvas.getContext("2d");
+
+
+
+        // tool.moveTo(0,0);
+        // tool.lineTo(400,400);
+        // tool.strokeStyle = "green";
+        // tool.lineWidth = "20"
+        // tool.stroke();
+
+        // tool.beginPath();
+        // tool.moveTo(400,400);
+        // tool.lineTo(600,200);
+        // tool.strokeStyle = "red";
+        // tool.lineWidth = "10";
+        // tool.stroke();
+    </script>
+</body>
+</html>
